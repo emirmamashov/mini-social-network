@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <a id="load-id" class="btn bg-success" data-toggle="modal" data-target="#modal">Создать новый пост</a>
+    <br/> <br/>
+
+    <div class="thumbnail" *ngFor="let post of postsTop">
+      <!--<img src="..." alt="...">-->
+      <div class="caption">
+        <h3>{{post.title}}</h3>
+        <p>{{post.body}}</p>
+        <p *ngIf="post.userId"><app-author-about [user-id]="post.userId"></app-author-about></p>
+          <div *ngIf="post.comments && post.comments.length>0">
+            <blockquote class="comments" *ngFor="let comment of post.comments">
+              <p>{{comment.body}}</p>
+              <small>username: <cite title="Source Title">{{comment.name}}</cite></small>
+            </blockquote>
+          </div>
+        <p>
+          <a class="btn btn-primary" (click)="getComments(post.id)">Комментарии</a>
+          <a class="btn btn-primary" (click)="deletePost(post.id)">Удалить пост</a>
+        </p>
+      </div>
+    </div>
+    <div class="more-button" id="buttonShowMany">
+        <a id="load-id" class="btn bg-primary" (click)="randomizePosts()">Показать больше</a>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Создание нового поста</h4>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+              <label class="control-label" for="title">Заголовок:</label>
+              <input class="form-control" name="title" id="title" type="text" [(ngModel)]="newPost.title"/>
+          </div>
+          <div class="form-group">
+              <label class="control-label" for="text">Текст:</label>
+              <textarea class="form-control" name="text" id="text" type="text" [(ngModel)]="newPost.body"></textarea>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn bg-success" data-dismiss="modal">Отмена</button>
+        <button type="button" class="btn bg-success" (click)="createPost(newPost)" data-dismiss="modal">Сохранить</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="row" *ngIf="pagedItems && pagedItems.length>0">
+   <div class="col-sm-6 col-md-4" *ngFor="let photo of pagedItems">
+    <div class="thumbnail">
+      <a href="{{photo.thumbnailUrl}}" target="_blank" class="thumbnail">
+        <img src="{{photo.thumbnailUrl}}" alt="{{photo.title}}">
+      </a>
+      <div class="caption">
+        <h5>{{photo.title}}</h5>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- pager -->
+<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+    <li [ngClass]="{disabled:pager.currentPage === 1}">
+        <a (click)="setPage(1)">Первый</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === 1}">
+        <a (click)="setPage(pager.currentPage - 1)">Назад</a>
+    </li>
+    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+        <a (click)="setPage(page)">{{page}}</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a (click)="setPage(pager.currentPage + 1)">Вперед</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a (click)="setPage(pager.totalPages)">Последний</a>
+    </li>
+</ul>

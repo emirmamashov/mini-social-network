@@ -1,0 +1,26 @@
+.comments {
+    font-size: 12px;
+}
+.more-button {
+    text-align: center;
+    padding-top: 25px;
+}
+.more-button a {
+    font-size: 16px;
+    padding: 10px 62px;
+}
+.btn {
+    display: inline-block;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: #1b71ef;
+    text-decoration: none;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.24);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.24);
+    box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.24);
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -ms-transition: .2s ease;
+    -o-transition: .2s ease;
+    transition: .2s ease;
+}
